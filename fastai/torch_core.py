@@ -64,6 +64,7 @@ AdamW = partial(optim.Adam, betas=(0.9,0.99))
 
 def tensor(x:Any)->Tensor:
     "Like `torch.as_tensor`, but handle lists too"
+    x = array(x, dtype=np.int64) #HACK
     return torch.tensor(x) if is_listy(x) else as_tensor(x)
 
 def np_address(x:np.ndarray)->int:
